@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Middleware\ApiAuthMiddleware;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,4 +26,9 @@ Route::get('/test-project','App\Http\Controllers\ProjectController@test');
 Route::get('/test-tool','App\Http\Controllers\ToolController@test');
 
 //User Routes
-Route::post('/register','App\Http\Controllers\UserController@register');
+Route::post('/api/register','App\Http\Controllers\UserController@register');
+Route::post('/api/login','App\Http\Controllers\UserController@login');
+Route::put('/api/user/update' ,'App\Http\Controllers\UserController@update');
+Route::post('/api/user/upload' ,'App\Http\Controllers\UserController@uploadFile')->middleware(ApiAuthMiddleware::class);
+Route::get('/api/user/avatar/{fileName}' ,'App\Http\Controllers\UserController@getImage');
+Route::get('/api/user/detail/{id}' ,'App\Http\Controllers\UserController@detail');
