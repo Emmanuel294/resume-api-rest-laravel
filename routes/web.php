@@ -32,3 +32,12 @@ Route::put('/api/user/update' ,'App\Http\Controllers\UserController@update');
 Route::post('/api/user/upload' ,'App\Http\Controllers\UserController@uploadFile')->middleware(ApiAuthMiddleware::class);
 Route::get('/api/user/avatar/{fileName}' ,'App\Http\Controllers\UserController@getImage');
 Route::get('/api/user/detail/{id}' ,'App\Http\Controllers\UserController@detail');
+
+//Resume Routes
+Route::resource('/api/resume','App\Http\Controllers\ResumeController')->middleware(ApiAuthMiddleware::class);
+
+//Project Routes
+Route::resource('/api/project','App\Http\Controllers\ProjectController')->middleware(ApiAuthMiddleware::class);
+
+//Tool Routes
+Route::resource('/api/tool','App\Http\Controllers\ToolController')->middleware(ApiAuthMiddleware::class);

@@ -139,7 +139,11 @@ class UserController extends Controller
                 'user'  => $userUpdate
             );
         }else{
-            
+            $data = Array(
+                'code' => 400,
+                'status' => 'error',
+                'message' => 'User Data Required.'
+            );
         }
         
         return response()->json($data, $data['code']);
